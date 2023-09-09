@@ -38,6 +38,7 @@ public class PlaygroundTest {
         assertTrue(p.moveAgent(a, new Point(1,0)));
         assertFalse(p.moveAgent(a, new Point(1,1)));
         assertFalse(p.moveAgent(a, new Point(2,1)));
+        assertFalse(p.moveAgent(a, new Point(1,-1)));
         assertTrue(p.moveAgent(a, new Point(2,0)));
         assertTrue(p.moveAgent(a, new Point(2,1)));
         assertTrue(p.moveAgent(a, new Point(2,2)));

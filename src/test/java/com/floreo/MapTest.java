@@ -18,7 +18,7 @@ public class MapTest {
         assertEquals("Start is out of map dimensions", e.getMessage());
 
         e = assertThrows(RuntimeException.class,
-                () -> new Map(new int[2][2], new Point(0,0), new Point(0, 2)));
+                () -> new Map(new int[2][2], new Point(0,0), new Point(0, -1)));
         assertEquals("End is out of map dimensions", e.getMessage());
 
         e = assertThrows(RuntimeException.class,

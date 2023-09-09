@@ -1,8 +1,12 @@
 package com.floreo;
 
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
+@Setter
+@ToString
 public class Agent extends Point {
     String name;
 
@@ -10,6 +14,4 @@ public class Agent extends Point {
         super(0, 0);
         this.name = name;
     }
-
-    public Point getStep(int[] input) {return this;}
 }

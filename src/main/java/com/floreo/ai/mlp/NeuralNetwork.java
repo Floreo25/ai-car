@@ -72,4 +72,73 @@ public class NeuralNetwork {
         weights_ih.add(wih_delta);
         bias_h.add(h_gradient);
     }
+
+    public static NeuralNetwork crossover(NeuralNetwork parent1, NeuralNetwork parent2) {
+        NeuralNetwork child = new NeuralNetwork(parent1.weights_ih.cols, parent1.weights_ho.cols, parent1.weights_ho.rows);
+
+        double mutation = 0;
+        if(Math.random() < 0.01) mutation = 0.1;
+
+        // Crossover weights_ih
+        for (int i = 0; i < parent1.weights_ih.rows; i++) {
+            for (int j = 0; j < parent1.weights_ih.cols; j++) {
+                // Randomly select the weight from either parent1 or parent2
+                if (Math.random() < 0.5) {
+                    child.weights_ih.data[i][j] = parent1.weights_ih.data[i][j];
+                } else {
+                    child.weights_ih.data[i][j] = parent2.weights_ih.data[i][j];
+                }
+                if (Math.random() < 0.5) {
+                    child.weights_ih.data[i][j] += mutation;
+                }
+            }
+        }
+
+        // Crossover weights_ho
+        for (int i = 0; i < parent1.weights_ho.rows; i++) {
+            for (int j = 0; j < parent1.weights_ho.cols; j++) {
+                // Randomly select the weight from either parent1 or parent2
+                if (Math.random() < 0.5) {
+                    child.weights_ho.data[i][j] = parent1.weights_ho.data[i][j];
+                } else {
+                    child.weights_ho.data[i][j] = parent2.weights_ho.data[i][j];
+                }
+                if (Math.random() < 0.5) {
+                    child.weights_ho.data[i][j] += mutation;
+                }
+            }
+        }
+
+        // Crossover bias_h
+        for (int i = 0; i < parent1.bias_h.rows; i++) {
+            for (int j = 0; j < parent1.bias_h.cols; j++) {
+                // Randomly select the bias from either parent1 or parent2
+                if (Math.random() < 0.5) {
+                    child.bias_h.data[i][j] = parent1.bias_h.data[i][j];
+                } else {
+                    child.bias_h.data[i][j] = parent2.bias_h.data[i][j];
+                }
+                if (Math.random() < 0.5) {
+                    child.bias_h.data[i][j] += mutation;
+                }
+            }
+        }
+
+        // Crossover bias_o
+        for (int i = 0; i < parent1.bias_o.rows; i++) {
+            for (int j = 0; j < parent1.bias_o.cols; j++) {
+                // Randomly select the bias from either parent1 or parent2
+                if (Math.random() < 0.5) {
+                    child.bias_o.data[i][j] = parent1.bias_o.data[i][j];
+                } else {
+                    child.bias_o.data[i][j] = parent2.bias_o.data[i][j];
+                }
+                if (Math.random() < 0.5) {
+                    child.bias_o.data[i][j] += mutation;
+                }
+            }
+        }
+
+        return child;
+    }
 }

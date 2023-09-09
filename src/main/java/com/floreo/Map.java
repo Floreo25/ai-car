@@ -18,8 +18,12 @@ public class Map {
         this.x = map[0].length;
         this.y = map.length;
 
-        if (start.getX() >= x || start.getY() >= y) throw new RuntimeException("Start is out of map dimensions");
-        if (end.getX() >= x || end.getY() >= y) throw new RuntimeException("End is out of map dimensions");
+        if (start.getX() >= x || start.getY() >= y || start.getX() < 0 || start.getY() < 0)
+            throw new RuntimeException("Start is out of map dimensions");
+        if (end.getX() >= x || end.getY() >= y || end.getX() < 0 || end.getY() < 0)
+            throw new RuntimeException("End is out of map dimensions");
+
+        //TODO: check start != end
 
         for (int ix = 0; ix < x; ix++) {
             for (int iy = 0; iy < y; iy++) {
