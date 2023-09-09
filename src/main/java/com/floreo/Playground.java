@@ -51,7 +51,10 @@ public class Playground {
                 .collect(Collectors.toList());
         int cell = map.getAt(x, y);
         StringBuilder builder = new StringBuilder(String.valueOf(cell));
-        result.forEach(a -> builder.append(":").append(a.getName()));
+        if (!result.isEmpty()) {
+            // result.forEach(a -> builder.append(":").append(a.getName()));
+            builder.append(":a");
+        }
         return builder.toString();
     }
 

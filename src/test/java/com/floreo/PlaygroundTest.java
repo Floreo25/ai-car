@@ -17,7 +17,7 @@ public class PlaygroundTest {
         p.addAgent(new Agent("a1"));
         p.addAgent(new Agent("a2"));
 
-        assertEquals("0:a1:a2", p.getAt(0,0));
+        assertEquals("0:a", p.getAt(0,0));
         assertEquals("1", p.getAt(1,0));
         assertEquals("2", p.getAt(0,1));
         assertEquals(String.valueOf(Map.Item.END.ordinal()), p.getAt(1,1));
