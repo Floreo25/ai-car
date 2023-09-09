@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Playground {
-    private Map map;
+    private final Map map;
     private final Collection<Agent> agents;
 
     public Playground(Map map) {
@@ -30,6 +30,21 @@ public class Playground {
         return false;
     }
 
+    public int[] getAgentSurround(Agent agent) {
+        int x = agent.getX();
+        int y = agent.getY();
+        return new int[] {
+                map.getAt(x-1, y-1),
+                map.getAt(x, y-1),
+                map.getAt(x+1, y-1),
+                map.getAt(x+1, y),
+                map.getAt(x+1, y+1),
+                map.getAt(x, y+1),
+                map.getAt(x-1, y+1),
+                map.getAt(x-1, y),
+        };
+    }
+
     public String getAt(int x, int y) {
         List<Agent> result = agents.stream()
                 .filter(agent -> agent.getX() == x && agent.getY() == y)
@@ -45,8 +60,8 @@ public class Playground {
             for (int x = 0; x < map.getX(); x++) {
                 System.out.printf("%s\t\t", getAt(x, y));
             }
-            System.out.println("");
+            System.out.println();
         }
-        System.out.println("");
+        System.out.println();
     }
 }

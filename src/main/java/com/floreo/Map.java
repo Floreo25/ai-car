@@ -35,13 +35,13 @@ public class Map {
     }
 
     public int getAt(int x, int y) {
-        if (this.x <= x || this.y <= y || x < 0 || y < 0) throw new RuntimeException("X or Y are out of map dimension");
+        if (this.x <= x || this.y <= y || x < 0 || y < 0) return WALL.ordinal();
         if (x == start.getX() && y == start.getY()) return START.ordinal();
         if (x == end.getX() && y == end.getY()) return END.ordinal();
         return map[y][x];
     }
 
-    public static enum Item {
+    public enum Item {
         START,
         END,
         EMPTY,

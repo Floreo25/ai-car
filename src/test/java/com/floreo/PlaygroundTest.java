@@ -2,6 +2,7 @@ package com.floreo;
 
 import org.junit.Test;
 
+import static com.floreo.Map.Item.*;
 import static org.junit.Assert.*;
 
 public class PlaygroundTest {
@@ -40,5 +41,20 @@ public class PlaygroundTest {
         assertTrue(p.moveAgent(a, new Point(2,0)));
         assertTrue(p.moveAgent(a, new Point(2,1)));
         assertTrue(p.moveAgent(a, new Point(2,2)));
+    }
+
+    @Test
+    public void testSurround() {
+        int[][] field = new int[][]{
+                {0, 3},
+                {2, 1}
+        };
+        Map map = new Map(field, new Point(0, 0), new Point(1, 1));
+        Playground p = new Playground(map);
+        Agent a = new Agent("a1");
+        p.addAgent(a);
+
+        int w = WALL.ordinal();
+        assertArrayEquals(new int[]{w, w, w, 3, 1, 2, w, w}, p.getAgentSurround(a));
     }
 }

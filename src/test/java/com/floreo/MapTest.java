@@ -38,12 +38,7 @@ public class MapTest {
         assertEquals(2, map.getAt(0,1));
         assertEquals(END.ordinal(), map.getAt(1,1));
 
-        Exception e = assertThrows(RuntimeException.class,
-                () -> map.getAt(-1, 0));
-        assertEquals("X or Y are out of map dimension", e.getMessage());
-
-        e = assertThrows(RuntimeException.class,
-                () -> map.getAt(1, 10));
-        assertEquals("X or Y are out of map dimension", e.getMessage());
+        assertEquals(WALL.ordinal(), map.getAt(-1, 0));
+        assertEquals(WALL.ordinal(), map.getAt(0, 10));
     }
 }
